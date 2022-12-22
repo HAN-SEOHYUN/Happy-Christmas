@@ -11,7 +11,6 @@ export async function getCountByName(req:Request, res:Response){
     await fromSianRepository
     .findAndCount({where : {recipient: inputRecipient}})
     .then((object)=> {
-        console.log (object[1]);
         res.send({
             success: true,
             data : {

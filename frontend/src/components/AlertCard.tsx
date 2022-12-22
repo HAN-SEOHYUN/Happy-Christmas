@@ -23,21 +23,20 @@ const AlertCard: React.FC<Props> = ({ recipient }) => {
       pathname: "/detail",
       state: {
         id: id,
-        isConfirmed: isConfirmed, //DetailData 라는 type의 param 이 넘어감
+        isConfirmed: isConfirmed,
       },
     });
   };
 
+  //비밀번호가 일치하는지 확인해줌
   const checkPwdHandler = async () => {
     try {
       const res = await checkPwd(recipient, pwd);
       if (res) {
-        console.log(res);
         //서버로부터 pwd 가 일치한다는 답변을 받는다면
         isConfirmed = true;
         moveDetail(res.id, isConfirmed);
       } else {
-        console.log(res);
         alert("비밀번호가 올바르지 않습니다 !");
       }
     } catch (err) {

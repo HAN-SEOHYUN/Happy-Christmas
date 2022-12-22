@@ -3,11 +3,12 @@ import { Message } from "./../pages/DetailMessage";
 import { AxiosResponse } from "axios";
 import axiosInst from "../../src/apis";
 import { confirm } from "../pages/HomePage";
+import axios from "axios";
 
 export const getMessageById = async (id: number): Promise<Message> => {
   try {
-    const res = await axiosInst.get<AxiosResponse<Message, Error>>(
-      `/from/${id}`
+    const res = await axios.get<AxiosResponse<Message, Error>>(
+      `http://localhost:4000/api/from/${id}`
     ); //promise
     return res.data.data; //success : Message 반환
   } catch (err) {
@@ -51,3 +52,14 @@ export const checkPwd = async (
     throw new Error();
   }
 };
+
+// export const getMessageById = async (id: number): Promise<Message> => {
+//   try {
+//     const res = await axiosInst.get<AxiosResponse<Message, Error>>(
+//       `/from/${id}`
+//     ); //promise
+//     return res.data.data; //success : Message 반환
+//   } catch (err) {
+//     throw new Error(); //
+//   }
+// };

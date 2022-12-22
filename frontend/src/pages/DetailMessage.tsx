@@ -24,13 +24,11 @@ const DetailMessage: React.FC = () => {
   const [object, setObject] = useState<Message | null>(null);
   const [loading, setLoading] = useState(true);
 
-  //const { id, isConfirmed } = location.state;
-
   const state = location.state as PropsType;
 
+  //메세지 객체를 가져와서 페이지에 정보를 뿌려줌
   const getMessage = async (id: number, isConfirmed: boolean) => {
     if (isConfirmed) {
-      //id / isconfirmed
       try {
         const message = await getMessageById(id);
         setObject(message);
@@ -43,11 +41,8 @@ const DetailMessage: React.FC = () => {
       history.push(`/`);
     }
   };
-  console.log(object);
 
   useEffect(() => {
-    //id가 변경될때마다 실행됨
-
     getMessage(state.id, state.isConfirmed);
     console.log(location);
   }, [state.id]); //eslint-disable-line
@@ -68,7 +63,7 @@ const DetailMessage: React.FC = () => {
           </div>
           <Link id="write-Btn" className="btn btn-primary" to={`/register`}>
             편지쓰기
-          </Link>{" "}
+          </Link>
         </>
       )}
     </>

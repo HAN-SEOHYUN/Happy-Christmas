@@ -7,6 +7,9 @@ import cors from 'cors';
 
 const PORT = 4000;
 
+//initialize 가 뭔가 !
+//express 의 use() 함수에 대하여
+
 AppDataSource.initialize()
   .then(async () => {
     // create express app
@@ -14,9 +17,10 @@ AppDataSource.initialize()
     
     //cors
     app.use(cors({
-        origin:'*'//http://localhost:3000'
+        origin:'http://localhost:3000'
     }));
     
+    //body-parser
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 

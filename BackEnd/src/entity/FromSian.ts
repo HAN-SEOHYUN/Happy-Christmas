@@ -4,6 +4,7 @@ import {
     Column
   } from "typeorm";
   
+  //각 데코레이션의 의미 !
   @Entity()
   export class FromSian {
     

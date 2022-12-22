@@ -12,7 +12,6 @@ const CreateMessage: React.FC = () => {
   const onSubmit = () => {
     try {
       postToSian(sender, message);
-
       alert(`${sender}님의 메세지가 등록되었습니다. HappyChristmas!`);
       history.push(`/`);
     } catch (err) {
@@ -60,7 +59,7 @@ const CreateMessage: React.FC = () => {
         작성하기
       </button>
 
-      <Link //뒤로가기 버튼 (detail Page)
+      <Link
         className="btn btn-danger ms-2"
         to="/"
         id="home-Btn"
