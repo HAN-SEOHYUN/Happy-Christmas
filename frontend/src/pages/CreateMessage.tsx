@@ -23,7 +23,7 @@ const CreateMessage: React.FC = () => {
   return (
     <>
       <h1 className="">
-        Write a Christmas Letter to <span className="font-size-md">서현</span>
+        Write a Christmas Letter to <span className="font-size-md">Sian</span>
         &nbsp;
         <FontAwesomeIcon icon={faGift} />
       </h1>

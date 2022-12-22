@@ -16,12 +16,12 @@ const NavBar = () => {
             }}
             to="/"
           >
-            From.한서현
+            From.Sian
           </Link>
         </div>
         <div>
           <Link className="btn btn-danger me-2" type="button" to="register" id="to-Btn">
-            To.한서현
+            To.Sian
           </Link>
         </div>
       </div>
