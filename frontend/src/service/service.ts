@@ -9,10 +9,10 @@ export const getMessageById = async (id: number): Promise<Message> => {
   try {
     const res = await axios.get<AxiosResponse<Message, Error>>(
       `http://localhost:4000/api/from/${id}`
-    ); //promise
-    return res.data.data; //success : Message 반환
+    ); 
+    return res.data.data; 
   } catch (err) {
-    throw new Error(); //
+    throw new Error();
   }
 };
 

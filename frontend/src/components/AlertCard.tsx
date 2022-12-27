@@ -23,7 +23,7 @@ const AlertCard: React.FC<Props> = ({ recipient }) => {
       pathname: "/detail",
       state: {
         id: id,
-        isConfirmed: isConfirmed,
+        isConfirmed: isConfirmed, //props 가 아님
       },
     });
   };
@@ -70,7 +70,10 @@ const AlertCard: React.FC<Props> = ({ recipient }) => {
               }}
             />
           </div>
-          <button className="btn btn-primary" name="checkPwd-Btn" onClick={checkPwdHandler}>
+          <button 
+          className="btn btn-primary" 
+          name="checkPwd-Btn" 
+          onClick={checkPwdHandler}>
             메세지 읽기
           </button>
         </div>

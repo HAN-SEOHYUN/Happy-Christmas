@@ -28,18 +28,17 @@ const DetailMessage: React.FC = () => {
 
   //메세지 객체를 가져와서 페이지에 정보를 뿌려줌
   const getMessage = async (id: number, isConfirmed: boolean) => {
-    if (isConfirmed) {
-      try {
-        const message = await getMessageById(id);
-        setObject(message);
-      } catch (err) {
-        alert(err + "에러");
-      }
-      setLoading(false);
-    } else {
-      alert("올바른 경로가 아닙니다 !");
+    if (!isConfirmed) {
+      alert("올바른 접근이 아닙니다 !");
       history.push(`/`);
     }
+    try {
+      const message = await getMessageById(id);
+      setObject(message);
+    } catch (err) {
+      alert(err + "에러");
+    }
+    setLoading(false);
   };
 
   useEffect(() => {

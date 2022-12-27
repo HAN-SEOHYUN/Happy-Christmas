@@ -2,12 +2,12 @@ import {
   getMessageById,
   getCountByName
 } from "./service";
+
 const axios = require('axios')
 jest.mock('axios'); //mock(): 가짜 모듈로 바꿔줌
 axios.get = jest.fn();
 
-
-test('getMessageById',async()=>{ 
+test('getMessageById',async()=>{ //
   const resp = [{id : 1, name : '홍길동'}];
 
   axios.get.mockResoledValue({

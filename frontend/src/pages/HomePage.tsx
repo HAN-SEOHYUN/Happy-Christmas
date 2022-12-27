@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
   const [count, setCount] = useState<number>();
 
   //서버에서 name 에 해당하는 row의 count 를 받아옴
-  const getCount = async () => {
+  const getCount = async () => {//
     try {
       //서버에 요청한 이름으로 등록된 메세지가 있는지 확인
       const res = await getCountByName(recipient);
@@ -57,7 +57,9 @@ const HomePage: React.FC = () => {
             aria-describedby="button-addon2"
             onChange={(event) => {
               setRecipient(event.target.value);
-              setCount(0); //alert 카드 이름이 수정되는 오류 막아주기
+              //alert 카드 이름이 수정되는 오류 막아주기
+              setCount(0); //등록된 이름 없음(0) 으로 처리해서 value 수정 시 alert 카드가 안보이도록
+              
             }}
           />
           <button
@@ -70,7 +72,7 @@ const HomePage: React.FC = () => {
             확인하기
           </button>
         </div>
-        {count ? <AlertCard recipient={recipient} /> : null}
+        {count && <AlertCard recipient={recipient} />}
       </div>
     </div>
   );

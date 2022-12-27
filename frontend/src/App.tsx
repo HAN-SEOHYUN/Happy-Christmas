@@ -19,8 +19,6 @@ const App: React.FC = () => {
               />
             );
           })}
-
-          {/* <404/> */}
         </Switch>
       </div>
     </Router>
