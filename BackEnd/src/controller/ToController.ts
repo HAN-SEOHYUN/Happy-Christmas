@@ -15,4 +15,3 @@ export async function saveMesage(req:Request, res:Response){
     })
     .catch((err)=>console.log(err));
 }
-//save 된 객체 리턴

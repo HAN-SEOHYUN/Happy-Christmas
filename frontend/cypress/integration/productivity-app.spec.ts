@@ -50,14 +50,14 @@ context("메인페이지", () => {
         .click()
         .location()
         .should((location) => {
-          expect(location.pathname).to.eq("/detail");
+          expect(location.pathname).to.equal("/detail");
 
           it("상세페이지에서 편지 쓰기 버튼을 클릭하면 입력페이지로 이동한다", () => {
             cy.get("#write-Btn")
               .click()
               .location()
               .should((location) => {
-                expect(location.pathname).to.eq("/register");
+                expect(location.pathname).to.equal("/register");
               });
           });
         });
@@ -127,7 +127,7 @@ context("메뉴바 버튼", () => {
       });
   });
 
-  it("To 한서현 버튼을 입력페이지로 이동한다..", () => {
+  it("To 한서현 버튼을 누르면 입력페이지로 이동한다..", () => {
     cy.get("#to-Btn")
       .click()
       .location()

@@ -6,16 +6,15 @@ const fromSianRepository = AppDataSource.getRepository(FromSian);
 
 //이름을 넣으면 이름에 해당하는 row 의 count를 알려줌
 export async function getCountByName(req:Request, res:Response){
-    let inputRecipient = req.params.recipient;
+    const inputRecipient = req.params.recipient;
 
     await fromSianRepository
     .findAndCount({where : {recipient: inputRecipient}})
-    .then((object)=> {
-        console.log (object[1]);
+    .then(([FromSian,count])=> {
         res.send({
             success: true,
             data : {
-                count: object[1]
+                count
             }
         })
     })
@@ -23,7 +22,7 @@ export async function getCountByName(req:Request, res:Response){
 }
 
 export async function getMessageById(req:Request, res:Response){
-    let inputId = parseInt(req.params.id);
+    const inputId = parseInt(req.params.id);
 
     await fromSianRepository
     .findOneBy({
@@ -44,8 +43,8 @@ export async function getMessageById(req:Request, res:Response){
 }
 
 export async function confirmPassword(req:Request, res:Response){
-    let inputRecipient = req.body.recipient;
-    let inputPwd = req.body.pwd;
+    const inputRecipient = req.body.recipient;
+    const  inputPwd = req.body.pwd;
 
     await fromSianRepository
     .findBy({
@@ -53,7 +52,7 @@ export async function confirmPassword(req:Request, res:Response){
     })
     .then((object)=> {
 
-        if(object[0].pwd === inputPwd) {
+        if(object[0].pwd === inputPwd) { //
             res.send({
                 success: true,
                 data : {id : object[0].id} //데이터의 id 만 보내기

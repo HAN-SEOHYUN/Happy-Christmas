@@ -12,7 +12,6 @@ const CreateMessage: React.FC = () => {
   const onSubmit = () => {
     try {
       postToSian(sender, message);
-
       alert(`${sender}님의 메세지가 등록되었습니다. HappyChristmas!`);
       history.push(`/`);
     } catch (err) {
@@ -24,7 +23,7 @@ const CreateMessage: React.FC = () => {
   return (
     <>
       <h1 className="">
-        Write a Christmas Letter to <span className="font-size-md">서현</span>
+        Write a Christmas Letter to <span className="font-size-md">Sian</span>
         &nbsp;
         <FontAwesomeIcon icon={faGift} />
       </h1>
@@ -60,7 +59,7 @@ const CreateMessage: React.FC = () => {
         작성하기
       </button>
 
-      <Link //뒤로가기 버튼 (detail Page)
+      <Link
         className="btn btn-danger ms-2"
         to="/"
         id="home-Btn"

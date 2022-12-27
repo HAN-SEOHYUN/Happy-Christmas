@@ -1,30 +1,47 @@
 import {
   getMessageById,
-  getCountByName,
-  postToSian,
-  checkPwd,
+  getCountByName
 } from "./service";
 
-describe("Service \\", () => {
-  describe("getMessageById", () => {
-    //getMessageById
-    it("should return a message with the ID", async () => {
-      const message = await getMessageById(2);
-      expect(message).toEqual({
-        recipient: "홍길동",
-        message: "안녕",
-        id: 2,
-        createdAt: "2022-12-15T09:28:29.000Z",
-      });
-    });
-  });
+const axios = require('axios')
+jest.mock('axios'); //mock(): 가짜 모듈로 바꿔줌
+axios.get = jest.fn();
 
-  describe("getCountByName", () => {
-    it("should return a count with the name", async () => {
-      const count = await getCountByName("홍길동");
-      expect(count).toEqual({ count: 1 });
-    });
+test('getMessageById',async()=>{ //
+  const resp = [{id : 1, name : '홍길동'}];
+
+  axios.get.mockResoledValue({
+    data : {data : resp},
   });
+    
+  const message = await getMessageById(1);
+  expect(message).toEqual(resp);
+  
+});
+
+//axiosInst.get.mockResoledValue({name:'홍길동'});
+// describe("Service \\", () => {
+//   describe("getMessageById", () => {
+//     //getMessageById
+//     it("should return a message with the ID", async () => {
+//       const message = await getMessageById(2);
+//       expect(message).toEqual({
+//         recipient: "홍길동",
+//         message: "안녕",
+//         id: 2,
+//         createdAt: "2022-12-15T09:28:29.000Z",
+//       });
+//     });
+//   });
+
+//   describe("getCountByName", () => {
+//     it("should return a count with the name", async () => {
+//       const count = await getCountByName("홍길동");
+//       expect(count).toEqual({ count: 1 });
+//     });
+//   });
+
+
 
   // describe('postToSian',()=>{
   //   test('postToSian sends the correct data', async () => {
@@ -46,4 +63,4 @@ describe("Service \\", () => {
   //     await expect(postToSian('홍길동', 'Hello')).rejects.toThrow();
   //   });
   // })
-});
+//});

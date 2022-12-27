@@ -14,9 +14,10 @@ AppDataSource.initialize()
     
     //cors
     app.use(cors({
-        origin:'*'//http://localhost:3000'
+        origin:'http://localhost:3000'
     }));
     
+    //body-parser
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
