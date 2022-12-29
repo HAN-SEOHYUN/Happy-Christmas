@@ -5,13 +5,15 @@ import {Request, Response} from 'express';
 const toSianRepository = AppDataSource.getRepository(ToSian);
 
 export async function saveMesage(req:Request, res:Response){
-    await toSianRepository
-    .save(req.body)
-    .then((object)=>{
+
+    try{
+        const toSian_object = await toSianRepository.save(req.body);
+        
         res.send({
             status : "success",
-            data : object
+            data : toSian_object
         })
-    })
-    .catch((err)=>console.log(err));
+    }catch(err){
+        console.log(err);
+    }
 }

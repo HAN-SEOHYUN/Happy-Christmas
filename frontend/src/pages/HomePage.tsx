@@ -2,9 +2,12 @@ import { useState } from "react";
 import AlertCard from "../components/AlertCard";
 import { getCountByName } from "../service/service";
 
-export interface confirm {
+export interface message {
   count: number;
+  fromSian_object: object;
 }
+
+
 
 
 const HomePage: React.FC = () => {

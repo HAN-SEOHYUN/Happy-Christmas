@@ -9,7 +9,7 @@ const App: React.FC = () => {
       <NavBar />
       <div className="container mt-3">
         <Switch>
-          {routes.map((route, index) => {
+          {routes.map((route,index) => {
             return (
               <Route
                 key={route.path}

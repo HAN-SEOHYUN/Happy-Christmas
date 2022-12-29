@@ -2,7 +2,7 @@ import { ResData } from "./../components/AlertCard";
 import { Message } from "./../pages/DetailMessage";
 import { AxiosResponse } from "axios";
 import axiosInst from "../../src/apis";
-import { confirm } from "../pages/HomePage";
+import { message } from "../pages/HomePage";
 import axios from "axios";
 
 export const getMessageById = async (id: number): Promise<Message> => {
@@ -16,11 +16,13 @@ export const getMessageById = async (id: number): Promise<Message> => {
   }
 };
 
-export const getCountByName = async (recipient: string): Promise<confirm> => {
+export const getCountByName = async (recipient: string): Promise<message> => {
   try {
-    const res = await axiosInst.get<AxiosResponse<confirm, Error>>(
-      `/from/recipient/${recipient}`
+    const res = await axiosInst.get<AxiosResponse<message, Error>>(
+      `/from/recipient`, 
+      {params : {recipient: recipient}}
     );
+    console.log("리턴 데이터",res.data.data);
     return res.data.data;
   } catch (err) {
     throw new Error();
@@ -43,7 +45,7 @@ export const checkPwd = async (
   pwd: string
 ): Promise<ResData> => {
   try {
-    const res = await axiosInst.post<AxiosResponse<ResData, Error>>("/from/", {
+    const res = await axiosInst.post<AxiosResponse<ResData, Error>>("/from/check/pwd", {
       recipient: recipient,
       pwd: pwd,
     });
