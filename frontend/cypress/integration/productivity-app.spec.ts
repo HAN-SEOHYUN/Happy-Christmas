@@ -71,7 +71,7 @@ context("메인페이지", () => {
       .get("[name=check-Btn]")
       .click();
     cy.on("window:alert", (str) => {
-      expect(str).to.equal(_testData.name + `에게 등록된 메세지가 없습니다`);
+      expect(str).to.equal(`${_testData.name}에게 등록된 메세지가 없습니다`);
     });
   });
 });

@@ -4,10 +4,10 @@ import {
 } from "./service";
 
 const axios = require('axios')
-jest.mock('axios'); //mock(): 가짜 모듈로 바꿔줌
+jest.mock('axios');
 axios.get = jest.fn();
 
-test('getMessageById',async()=>{ //
+test('should return a message_object with the ID',async()=>{
   const resp = [{id : 1, name : '홍길동'}];
 
   axios.get.mockResoledValue({
@@ -44,7 +44,7 @@ test('getMessageById',async()=>{ //
 
 
   // describe('postToSian',()=>{
-  //   test('postToSian sends the correct data', async () => {
+  //   test('register a new data', async () => {
   //     const sender = '홍길동';
   //     const message = 'Hello';
   //     postToSian(sender, message);
