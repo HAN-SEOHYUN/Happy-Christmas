@@ -1,7 +1,7 @@
 import { AppDataSource } from "./data-source";
 import express from "express";
-import toRouter from "./routes/ToRoutes";
-import fromRouter from "./routes/FromRoutes";
+import toRouter from "./routes/to.routes";
+import fromRouter from "./routes/from.routes";
 
 import cors from 'cors';
 
