@@ -27,7 +27,7 @@ const DetailMessage: React.FC = () => {
   const state = location.state as PropsType;
 
   //메세지 객체를 가져와서 페이지에 정보를 뿌려줌
-  const getMessage = async (id: number, isConfirmed: boolean) => {
+  const handleShowMessage = async (id: number, isConfirmed: boolean) => {
     if (!isConfirmed) {
       alert("올바른 접근이 아닙니다 !");
       history.push(`/`);
@@ -36,13 +36,13 @@ const DetailMessage: React.FC = () => {
       const message = await getMessageById(id);
       setObject(message);
     } catch (err) {
-      alert(err + "에러");
+      alert(err);
     }
     setLoading(false);
   };
 
   useEffect(() => {
-    getMessage(state.id, state.isConfirmed);
+    handleShowMessage(state.id, state.isConfirmed);
     console.log(location);
   }, [state.id]); //eslint-disable-line
 

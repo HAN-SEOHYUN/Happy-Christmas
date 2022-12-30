@@ -9,7 +9,7 @@ const CreateMessage: React.FC = () => {
   const [sender, setSender] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
-  const onSubmit = () => {
+  const handleMessageSubmit = () => {
     try {
       postToSian(sender, message);
       alert(`${sender}님의 메세지가 등록되었습니다. HappyChristmas!`);
@@ -52,7 +52,7 @@ const CreateMessage: React.FC = () => {
 
       <button
         className="btn btn-primary"
-        onClick={onSubmit}
+        onClick={handleMessageSubmit}
         name="create-Btn"
         disabled={!sender || !message}
       >

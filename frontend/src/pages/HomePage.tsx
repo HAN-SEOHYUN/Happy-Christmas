@@ -7,25 +7,22 @@ export interface message {
   fromSian_object: object;
 }
 
-
-
-
 const HomePage: React.FC = () => {
   const [recipient, setRecipient] = useState<string>("");
   const [count, setCount] = useState<number>();
 
   //서버에서 name 에 해당하는 row의 count 를 받아옴
-  const getCount = async () => {//
+  const handleMessageCount = async () => {//
     try {
       //서버에 요청한 이름으로 등록된 메세지가 있는지 확인
       const res = await getCountByName(recipient);
       setCount(res.count);
 
       if (!res.count) {
-        alert(recipient + "에게 등록된 메세지가 없습니다");
+        alert(`${recipient}에게 등록된 메세지가 없습니다`);
       }
     } catch (err) {
-      alert(err + "에러");
+      alert(err);
     }
   };
 
@@ -70,12 +67,12 @@ const HomePage: React.FC = () => {
             name='check-Btn'
             type="button"
             disabled={!recipient}
-            onClick={getCount}
+            onClick={handleMessageCount}
           >
             확인하기
           </button>
         </div>
-        {count && <AlertCard recipient={recipient} />}
+        {count ? <AlertCard recipient={recipient} />: null}
       </div>
     </div>
   );
