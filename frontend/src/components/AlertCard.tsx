@@ -18,29 +18,30 @@ const AlertCard: React.FC<Props> = ({ recipient }) => {
   const [pwd, setPwd] = useState<string>("");
   let isConfirmed = false;
 
-  const moveDetail = (id: number, isConfirmed: boolean) => {
+  const handleMoveDetail = (id: number, isConfirmed: boolean) => {
     history.push({
       pathname: "/detail",
       state: {
         id: id,
-        isConfirmed: isConfirmed, //props 가 아님
+        isConfirmed: isConfirmed,
       },
     });
   };
 
   //비밀번호가 일치하는지 확인해줌
-  const checkPwdHandler = async () => {
+  const handleCheckPwd = async () => {
     try {
       const res = await checkPwd(recipient, pwd);
-      if (res) {
-        //서버로부터 pwd 가 일치한다는 답변을 받는다면
-        isConfirmed = true;
-        moveDetail(res.id, isConfirmed);
-      } else {
+
+      if(!res){
         alert("비밀번호가 올바르지 않습니다 !");
+      }else{
+        isConfirmed = true;
+        handleMoveDetail(res.id, isConfirmed);
       }
+      
     } catch (err) {
-      alert(err + "에러");
+      alert(err);
       history.push(`/`);
     }
   };
@@ -73,7 +74,7 @@ const AlertCard: React.FC<Props> = ({ recipient }) => {
           <button 
           className="btn btn-primary" 
           name="checkPwd-Btn" 
-          onClick={checkPwdHandler}>
+          onClick={handleCheckPwd}>
             메세지 읽기
           </button>
         </div>
