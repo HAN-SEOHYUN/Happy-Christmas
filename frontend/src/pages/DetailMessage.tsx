@@ -21,7 +21,7 @@ const DetailMessage: React.FC = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const [object, setObject] = useState<Message | null>(null);
+  const [message_object, setMessage_object] = useState<Message | null>(null);
   const [loading, setLoading] = useState(true);
 
   const state = location.state as PropsType;
@@ -34,7 +34,7 @@ const DetailMessage: React.FC = () => {
     }
     try {
       const message = await getMessageById(id);
-      setObject(message);
+      setMessage_object(message);
     } catch (err) {
       alert(err);
     }
@@ -54,11 +54,11 @@ const DetailMessage: React.FC = () => {
         <>
           <div>
             <div className="d-flex">
-              <h1 className="flex-grow-1">{object?.recipient || "없음"}</h1>
+              <h1 className="flex-grow-1">{message_object?.recipient || "없음"}</h1>
             </div>
-            <small className="text-muted">{object?.createdAt}</small>
+            <small className="text-muted">{message_object?.createdAt}</small>
             <hr />
-            <p>{object?.message}</p>
+            <p>{message_object?.message}</p>
           </div>
           <Link id="write-Btn" className="btn btn-primary" to={`/register`}>
             편지쓰기
