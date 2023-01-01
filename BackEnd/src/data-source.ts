@@ -7,11 +7,11 @@ require("dotenv").config();
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: process.env.MYSQL_HOST, 
-    port: Number(process.env.MYSQL_PORT),
-    username: process.env.MYSQL_USERNAME,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+    host: process.env.RDS_HOSTNAME, 
+    port: Number(process.env.RDS_PORT),
+    username: process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD,
+    database: process.env.RDS_DB_NAME,
     entities: [FromSian, ToSian],
     synchronize: true,
     logging: true,
