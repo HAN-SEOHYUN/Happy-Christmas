@@ -14,7 +14,7 @@ AppDataSource.initialize()
     
     //cors
     app.use(cors({
-        origin:'http://52.7.156.49:3000'
+        origin:'http://localhost:3000'
     }));
     
     //body-parser
