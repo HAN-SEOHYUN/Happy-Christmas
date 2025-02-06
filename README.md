@@ -23,3 +23,7 @@
 <h3>프로젝트 소개 및 코드 설명은 아래 게시글로 정리했습니다.</h3>
 <h4>https://feelfreetothink.tistory.com/173</h4>
 <h4>https://feelfreetothink.tistory.com/174</h4>
+
+<br>
+<h3>사내 블로그에 해당 프로젝트에 관한 내용을 정리한 글입니다.</h3>
+https://www.dgmunit1.com/blog/else/proj-introduce
